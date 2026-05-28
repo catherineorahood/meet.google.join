@@ -51,11 +51,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const avatarLetterEl = document.getElementById('avatar-letter');
   const userNameTagEl = document.getElementById('user-name-tag');
 
-  // User Profile Initialization Logic (optional URL overrides, defaults to guestuser##@gmail.com and USER)
+  // User Profile Initialization Logic (optional URL overrides, defaults to GUEST USER and GUEST)
   function initUserProfile() {
     const urlParams = new URLSearchParams(window.location.search);
-    let name = urlParams.get('name') || 'USER';
-    let email = urlParams.get('email') || 'guestuser##@gmail.com';
+    let name = urlParams.get('name') || 'GUEST';
+    let email = urlParams.get('email') || 'GUEST USER';
 
     // Update UI elements
     userEmailEl.textContent = email;
