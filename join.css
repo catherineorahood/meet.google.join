@@ -1,0 +1,77 @@
+body{
+    font-family: 'Google Sans', 'Roboto', sans-serif;
+}
+
+header{
+    /* border: 1px solid black; */
+}
+
+
+header img{
+    width: 200px;
+}
+
+.full{
+    margin-top: 200px;
+    /* border: 1px solid black; */
+    width: 100%;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.full img{
+    width: 200px;
+}
+
+h2{
+    font-weight: 400;
+    font-size: 24px;
+}
+
+p{
+    font-size: 14px;
+    line-height: 1.5;
+    color: #5f6368;
+}
+
+.top33 p{
+    margin-top: -13px;
+}
+
+.full button{
+    padding: 15px;
+    width: 170px;
+    border-radius: 5px;
+    background-color: #2370ED;
+    color: white;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.full button:hover{
+    background-color: #1557b0;
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+}
+
+
+
+@media (max-width: 780px) {
+  /* CSS rules. for small phones go here */
+
+  header img{
+    width: 150px;
+  }
+  .full{
+    margin-top: 50px;
+  }
+
+  .full img{
+    width: 150px;
+  }
+}
