@@ -197,6 +197,12 @@ document.addEventListener('DOMContentLoaded', () => {
         canvasAnimationId = requestAnimationFrame(draw);
         return;
       }
+      
+      // Mirror the coordinate system horizontally so it reads normally under the video's transform scaleX(-1) mirror style
+      ctx.save();
+      ctx.translate(canvas.width, 0);
+      ctx.scale(-1, 1);
+
       ctx.fillStyle = '#202124';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -224,6 +230,8 @@ document.addEventListener('DOMContentLoaded', () => {
       ctx.fillStyle = '#8ab4f8';
       ctx.font = '14px Google Sans, Roboto, Arial';
       ctx.fillText('Secure context (HTTPS) required for physical webcam', canvas.width / 2, canvas.height / 2 + 20);
+
+      ctx.restore(); // Restore mirror transformation
 
       angle += 0.02;
       canvasAnimationId = requestAnimationFrame(draw);
